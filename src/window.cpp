@@ -472,10 +472,14 @@ void Window::addDocuments(const QStringList& files, const QStringList& datafiles
 
 	// Inform user about unopened and read-only files
 	if (!missing.isEmpty()) {
-		m_documents->alerts()->addAlert(new Alert(Alert::Warning, tr("Some files could not be opened."), missing, true));
+		Alert* missing_alert  = new Alert(Alert::Warning, tr("Some files could not be opened."), missing, true);
+		missing_alert->fadeAfter(5000);
+		m_documents->alerts()->addAlert(missing_alert);
 	}
 	if (!readonly.isEmpty()) {
-		m_documents->alerts()->addAlert(new Alert(Alert::Information, tr("Some files were opened Read-Only."), readonly, true));
+		Alert* readonly_alert = new Alert(Alert::Information, tr("Some files were opened Read-Only."), readonly, true);
+		readonly_alert->fadeAfter(5000);
+		m_documents->alerts()->addAlert(readonly_alert);
 	}
 
 	// Hide load screen

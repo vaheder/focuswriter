@@ -30,6 +30,7 @@
 #include <QStyle>
 #include <QTimeLine>
 #include <QToolButton>
+#include <QTimer>
 
 //-----------------------------------------------------------------------------
 
@@ -201,6 +202,13 @@ void Alert::fadeOut()
 	m_fade_timer->setDirection(QTimeLine::Backward);
 	connect(m_fade_timer, &QTimeLine::finished, this, &Alert::deleteLater);
 	m_fade_timer->start();
+}
+
+//-----------------------------------------------------------------------------
+
+void Alert::fadeAfter(int milliseconds)
+{
+	QTimer::singleShot(milliseconds, this, SLOT(fadeOut()));
 }
 
 //-----------------------------------------------------------------------------

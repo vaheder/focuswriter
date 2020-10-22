@@ -25,6 +25,7 @@ class QGraphicsOpacityEffect;
 class QLabel;
 class QTimeLine;
 class QToolButton;
+class QTimer;
 
 class Alert : public QWidget
 {
@@ -51,6 +52,7 @@ public:
 	void setText(const QString& text, const QStringList& details);
 
 	bool eventFilter(QObject* watched, QEvent* event);
+	void fadeAfter(int milliseconds);
 
 protected:
 	void enterEvent(QEvent* event);
