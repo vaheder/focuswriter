@@ -25,7 +25,6 @@ class QGraphicsOpacityEffect;
 class QLabel;
 class QTimeLine;
 class QToolButton;
-class QTimer;
 
 class Alert : public QWidget
 {
